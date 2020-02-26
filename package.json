@@ -10,7 +10,8 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:extension.ecLine"
+    "onCommand:extension.ecLine",
+    "onLanguage:vue"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -24,10 +25,6 @@
       {
         "language": "javascript",
         "path": "./snippets/basic.json"
-      },
-      {
-        "language": "vue",
-        "path": "./snippets/vue.json"
       }
     ]
   },
@@ -51,5 +48,8 @@
     "mocha": "^7.0.1",
     "typescript": "^3.7.5",
     "vscode-test": "^1.3.0"
+  },
+  "dependencies": {
+    "supports-color": "^7.1.0"
   }
 }
