@@ -42,7 +42,34 @@ const ecConfig: Tip[] = [
                 'bold'\n
                 'bolder'\n
                 'lighter'\n
-                100 | 200 | 300 | 400...`
+                100 | 200 | 300 | 400...`,
+                optionalValue: [
+                  {
+                    name: 'normal',
+                    parent: '',
+                    children: [],
+                    detail: 'isNormal'
+                  },
+                  {
+                    name: 'bold',
+                    parent: '',
+                    children: [],
+                    detail: 'isBold'
+                  },
+                  {
+                    name: 'bolder',
+                    parent: '',
+                    children: [],
+                    detail: 'isBolder'
+                  },
+                  {
+                    name: 'lighter',
+                    parent: '',
+                    children: [],
+                    detail: 'isLighter'
+                  }
+                ],
+                optionalDefault: 0
               }
             ],
             detail: `主标题样式。\n

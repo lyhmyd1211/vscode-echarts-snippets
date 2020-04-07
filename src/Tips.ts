@@ -1,4 +1,5 @@
 import config from './echarts_config/config';
+import * as vscode from 'vscode';
 class Tips {
   constructor() {}
 
@@ -8,25 +9,44 @@ class Tips {
 
   tip: Tip = {
     parent: 'option',
-    name: 'id',
+    name: '',
     children: [],
     detail: ''
   };
+  curContent: vscode.CompletionItem[] = [
+    new vscode.CompletionItem('正在加载', vscode.CompletionItemKind.Snippet)
+  ];
+  curItem: vscode.CompletionItem = new vscode.CompletionItem(
+    '正在加载',
+    vscode.CompletionItemKind.Snippet
+  );
   /**
    * 查找当前配置是否在配置文件中
    * @param config 配置文件列表
    * @param cur 当前配置名称
    */
-  private isConfig(config: Tip[], cur: string): Tip | null {
+  private isConfig(
+    config: Tip[],
+    cur: string,
+    model?: 'contain' | 'match'
+  ): Tip {
     for (let index = 0; index < config.length; index++) {
       const element = config[index];
-      if (element.name.indexOf(cur) > -1) {
-        return element;
-      } else if (element.children.length > 0) {
-        return this.isConfig(element.children, cur);
+      if (model === 'match') {
+        if (element.name === cur) {
+          return element;
+        } else if (element.children.length > 0) {
+          return this.isConfig(element.children, cur, model);
+        }
+      } else {
+        if (element.name.indexOf(cur) > -1) {
+          return element;
+        } else if (element.children.length > 0) {
+          return this.isConfig(element.children, cur, model);
+        }
       }
     }
-    return null;
+    return this.tip;
   }
 
   /**
@@ -42,11 +62,27 @@ class Tips {
   filterBlank(text: string) {
     return text.replace(/\s+/g, '');
   }
-  getSnippet(parent: string, curName: string) {
-    let pConfig = this.isConfig(config, parent);
+  getSnippet(
+    parent: string,
+    curName: string,
+    model?: 'contain' | 'match'
+  ): Tip {
+    let pConfig = this.isConfig(config, parent, model);
     if (pConfig) {
-      return this.isConfig(pConfig.children, curName);
+      return this.isConfig(pConfig.children, curName, model);
     }
+    return this.tip;
+  }
+  endWith(str: string, end: string) {
+    if (
+      end === null ||
+      end === '' ||
+      end.length === 0 ||
+      end.length > str.length
+    ) {
+      return false;
+    }
+    return str.substring(str.length - end.length) === end;
   }
 }
 

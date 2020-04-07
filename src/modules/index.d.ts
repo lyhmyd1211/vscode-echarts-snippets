@@ -5,4 +5,6 @@ interface Tip {
   detail: string;
   documentation?: string;
   defaultValue?: string;
+  optionalValue?: Tip[];
+  optionalDefault?: number;
 }
