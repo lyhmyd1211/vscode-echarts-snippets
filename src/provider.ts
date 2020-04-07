@@ -32,7 +32,7 @@ class TipsProvider implements vscode.CompletionItemProvider {
           `${showText?.name}`,
           vscode.CompletionItemKind.Snippet
         );
-        item.insertText = showText?.name;
+        item.insertText = showText?.defaultValue || showText?.name;
         item.documentation = new vscode.MarkdownString(showText?.documentation);
         item.detail = 'Echarts Snippets\n' + showText?.detail;
         return resolve([item]);

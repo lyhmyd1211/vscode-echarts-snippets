@@ -1,9 +1,3 @@
-// type Tip = {
-//   parent: string;
-//   name: string;
-//   children: Tip[];
-//   detail: string;
-// };
 import doc from './documentation';
 const ecConfig: Tip[] = [
   {
@@ -14,6 +8,9 @@ const ecConfig: Tip[] = [
       {
         name: 'title',
         parent: 'option',
+        detail: '标题组件，包含主标题和副标题。',
+        documentation: doc['option_title'],
+        defaultValue: 'title:{\n\ttext:"title"\n}',
         children: [
           {
             name: 'id',
@@ -25,11 +22,13 @@ const ecConfig: Tip[] = [
           {
             name: 'textStyle',
             parent: 'title',
+            defaultValue: 'textStyle:{\n}',
             children: [
               {
                 name: 'color',
                 parent: 'textStyle',
                 children: [],
+                defaultValue: 'color:"#333"',
                 detail: '主标题文字的颜色。\ndefault = "#333"'
               },
               {
@@ -50,9 +49,7 @@ const ecConfig: Tip[] = [
               所有属性\n
               { color , fontStyle , fontWeight , fontFamily , fontSize , lineHeight , width , height , textBorderColor , textBorderWidth , textShadowColor , textShadowBlur , textShadowOffsetX , textShadowOffsetY , rich }`
           }
-        ],
-        detail: '标题组件，包含主标题和副标题。',
-        documentation: doc['option_title']
+        ]
       }
     ]
   }

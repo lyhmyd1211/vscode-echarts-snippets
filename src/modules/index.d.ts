@@ -4,4 +4,5 @@ interface Tip {
   children: Tip[];
   detail: string;
   documentation?: string;
+  defaultValue?: string;
 }
