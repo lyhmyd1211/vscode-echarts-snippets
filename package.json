@@ -11,7 +11,8 @@
   ],
   "activationEvents": [
     "onCommand:extension.ecLine",
-    "onLanguage:vue"
+    "onLanguage:vue",
+    "onCommand:catCoding.start"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -19,6 +20,11 @@
       {
         "command": "extension.ecLine",
         "title": "ecLine折线图基础配置"
+      },
+      {
+        "command": "catCoding.start",
+        "title": "Start new cat coding session",
+        "category": "Cat Coding"
       }
     ],
     "snippets": [

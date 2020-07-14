@@ -13,6 +13,7 @@ class oProvider implements vscode.CompletionItemProvider {
     while (!this.tips.isParent(lineText.text) && pos >= 0) {
       pos = pos - 1;
       if (pos >= 0) {
+        console.log('awd');
         lineText = document.lineAt(pos);
       }
     }

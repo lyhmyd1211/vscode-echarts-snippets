@@ -18,7 +18,7 @@ export function activate(context: vscode.ExtensionContext) {
   let providerDisposable = vscode.languages.registerCompletionItemProvider(
     {
       scheme: 'file',
-      language: 'vue'
+      language: 'vue',
     },
     provider
   );
@@ -27,7 +27,7 @@ export function activate(context: vscode.ExtensionContext) {
   let oProviderDisposable = vscode.languages.registerCompletionItemProvider(
     {
       scheme: 'file',
-      language: 'vue'
+      language: 'vue',
     },
     oProvider,
     ':'
@@ -38,11 +38,10 @@ export function activate(context: vscode.ExtensionContext) {
     vscode.languages.registerHoverProvider(
       {
         scheme: 'file',
-        language: 'vue'
+        language: 'vue',
       },
       hoverProvider
     )
   );
 }
-
 export function deactivate() {}
